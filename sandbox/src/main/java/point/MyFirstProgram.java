@@ -8,6 +8,7 @@ public static void main(String[] args) {
 
 	Point pointA = new Point(0, 5);
 	Point pointB = new Point(0,-6);
+
 	System.out.printf("Функция возвращает %.2f как расстояние между pointA( %.2f, %.2f) и pointB (%.2f, %.2f )  \n",
 			distance(pointA, pointB), pointA.x, pointA.y, pointB.x, pointB.y);
 
