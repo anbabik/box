@@ -23,7 +23,7 @@ public class PointTest {
 
         Assert.assertTrue(pointAtoB.equals(pointBtoA));
     }
-    
+
     @Test
     public void testDistanceZeroXY() {
         Point pointA = new Point(0.0, 0.0);
