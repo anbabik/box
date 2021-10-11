@@ -3,49 +3,31 @@ package addressbook.appmanager;
 import addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
-public class ContactHelper {
-    private WebDriver wd;
-
+public class ContactHelper extends HelperBase{
 
     public ContactHelper(WebDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getUserAddress());
-        wd.findElement(By.name("home")).click();
-        wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys(contactData.getUserHomePhone());
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getUserEmail());
-        fillBirthday();
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        type(By.name("firstname"),contactData.getFirstName());
+        type(By.name("lastname"),contactData.getLastName());
+        type(By.name("address"), contactData.getUserAddress());
+        type(By.name("home"), contactData.getUserHomePhone());
+        type(By.name("email"), contactData.getUserEmail());
+        fillBirthday(By.name("bday"), "10", By.name("bmonth"), "December", By.name("byear"), "1993");
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void fillBirthday() {
-        wd.findElement(By.name("bday")).click();
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText("10");
-        wd.findElement(By.name("bmonth")).click();
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("December");
-        wd.findElement(By.name("byear")).click();
-        wd.findElement(By.name("byear")).click();
-        wd.findElement(By.name("byear")).clear();
-        wd.findElement(By.name("byear")).sendKeys("1993");
+    //Дополнительно попробовала вводить дату рождения пользователя
+    public void fillBirthday(By bday, String day, By bmonth, String month, By byear, String year) {
+        select(bday, day);
+        select(bmonth, month);
+        type(byear, year);
     }
 
     public void initNewContactCreation() {
-        wd.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
 }
