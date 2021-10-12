@@ -22,6 +22,19 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
+    public void editContactForm(By locator, String text) {
+        type(locator, text);
+    }
+
+    public void confirmChangingContactInfo() {
+        click(By.xpath("//div[@id='content']/form/input[22]"));
+    }
+
+    public void initEditContact() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[20]/td[8]/a/img"));
+        click(By.xpath("//form[@action='edit.php']"));
+    }
+
     //Дополнительно попробовала вводить дату рождения пользователя
     public void fillBirthday(By bday, String day, By bmonth, String month, By byear, String year) {
         select(bday, day);

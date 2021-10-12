@@ -15,6 +15,7 @@ public class ContactData {
         this.userEmail = userEmail;
     }
 
+
     public String getFirstName() {
         return firstName;
     }

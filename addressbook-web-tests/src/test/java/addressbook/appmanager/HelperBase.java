@@ -22,7 +22,6 @@ public class HelperBase {
         wd.findElement(locator).sendKeys(text);
     }
 
-
     //Выбрать значение из выпадающего списка, например, установить дату рождения
     protected void select(By locator, String text) {
         new Select(wd.findElement(locator)).selectByVisibleText(text);
