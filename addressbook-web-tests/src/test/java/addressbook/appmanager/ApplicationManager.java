@@ -14,6 +14,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private HelperBase helperBase;
     private String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
 
@@ -26,6 +27,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
+        helperBase = new HelperBase(wd);
         sessionHelper.login("admin", "secret");
     }
 
@@ -53,4 +55,10 @@ public class ApplicationManager {
     public SessionHelper getSessionHelper() {
         return sessionHelper;
     }
+
+    public HelperBase getHelperBase() {
+        return helperBase;
+    }
+
+
 }

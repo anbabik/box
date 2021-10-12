@@ -4,6 +4,8 @@ import addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 public class ContactHelper extends HelperBase{
 
     public ContactHelper(WebDriver wd) {
@@ -29,5 +31,15 @@ public class ContactHelper extends HelperBase{
 
     public void initNewContactCreation() {
         click(By.linkText("add new"));
+    }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void removeContact() {
+        click(By.xpath("//input[@value='Delete']"));
+        assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+
     }
 }
