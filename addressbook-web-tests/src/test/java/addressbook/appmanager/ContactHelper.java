@@ -22,8 +22,8 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void editContactForm(By locator, String text) {
-        type(locator, text);
+    public void editContactForm(String locatorName, String text) {
+        type(By.name(locatorName), text);
     }
 
     public void confirmChangingContactInfo() {
