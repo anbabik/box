@@ -22,13 +22,15 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void editContactForm(String locatorName, String text) {
-        type(By.name(locatorName), text);
+    public void editContactForm(ContactData contactData) {
+      type(By.name("firstname"),contactData.getFirstName());
+      type(By.name("lastname"),contactData.getLastName());
+      type(By.name("address"), contactData.getUserAddress());
+      type(By.name("home"), contactData.getUserHomePhone());
+      type(By.name("email"), contactData.getUserEmail());
+      click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
-    public void confirmChangingContactInfo() {
-        click(By.xpath("//div[@id='content']/form/input[22]"));
-    }
 
     public void initEditContact() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[20]/td[8]/a/img"));
