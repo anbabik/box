@@ -53,4 +53,5 @@ public class GroupHelper extends HelperBase{
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
+
 }

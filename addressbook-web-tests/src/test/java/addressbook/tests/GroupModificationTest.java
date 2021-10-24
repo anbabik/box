@@ -9,7 +9,7 @@ public class GroupModificationTest extends TestBase {
     public void testGroupModification() throws Exception {
         app.getNavigationHelper().goToGroupPage();
        if (! app.getGroupHelper().isThereAGroup()) {
-            app.getGroupHelper().newGroup(new GroupData("newGroup", "eee", "ooo"));
+            app.getGroupHelper().newGroup(new GroupData("newGroup", null, null));
         }
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().editGroup();

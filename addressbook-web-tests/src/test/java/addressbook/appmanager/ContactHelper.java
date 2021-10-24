@@ -18,7 +18,11 @@ public class ContactHelper extends HelperBase{
         type(By.name("address"), contactData.getUserAddress());
         type(By.name("home"), contactData.getUserHomePhone());
         type(By.name("email"), contactData.getUserEmail());
-        fillBirthday(By.name("bday"), "10", By.name("bmonth"), "December", By.name("byear"), "1993");
+        if ((contactData.getUserBday()!=null)
+                &&(contactData.getUserBmonth()!=null)
+                    &&(contactData.getUserByear()!=null)) {
+                        fillBirthday(contactData);
+        }
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
@@ -29,19 +33,20 @@ public class ContactHelper extends HelperBase{
       type(By.name("home"), contactData.getUserHomePhone());
       type(By.name("email"), contactData.getUserEmail());
       click(By.xpath("//div[@id='content']/form/input[22]"));
+
+
+
     }
 
-
     public void initEditContact() {
-        click(By.xpath("//table[@id='maintable']/tbody/tr[20]/td[8]/a/img"));
-        click(By.xpath("//form[@action='edit.php']"));
+        click(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a"));
     }
 
     //Дополнительно попробовала вводить дату рождения пользователя
-    public void fillBirthday(By bday, String day, By bmonth, String month, By byear, String year) {
-        select(bday, day);
-        select(bmonth, month);
-        type(byear, year);
+    public void fillBirthday(ContactData contactData) {
+        select(By.name("bday"), contactData.getUserBday());
+        select(By.name("bmonth"), contactData.getUserBmonth());
+        type(By.name("byear"), contactData.getUserByear());
     }
 
     public void initNewContactCreation() {
@@ -56,5 +61,14 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//input[@value='Delete']"));
         assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
 
+    }
+
+    public void newContact(ContactData contact) {
+        initNewContactCreation();
+        fillContactForm(contact);
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
