@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
 
-    private WebDriver wd;
+    public WebDriver wd;
     private boolean acceptNextAlert = true;
 
     public HelperBase(WebDriver wd) {
