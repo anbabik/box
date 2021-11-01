@@ -1,7 +1,10 @@
 package addressbook.tests;
 
 import addressbook.model.ContactData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class ContactRemovalTest extends TestBase{
 
@@ -12,8 +15,12 @@ public class ContactRemovalTest extends TestBase{
                     "112", "redsmirnoFF@gmail.com"));
             app.getNavigationHelper().returnHomePage();
         }
+        List<ContactData> initUsersList = app.getContactHelper().getUsersList();
         app.getContactHelper().selectContact();
         app.getContactHelper().removeContact();
+        List<ContactData> currentUsersList = app.getContactHelper().getUsersList();
+
+        Assert.assertEquals(currentUsersList.size(), initUsersList.size()-1);
 
     }
 
